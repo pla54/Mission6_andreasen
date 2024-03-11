@@ -5,6 +5,9 @@ namespace Mission6_andreasen.Models
 {
     public class Movie
     {
+
+        //This is the model for the Movies being added to the database that also uses the category model.
+        //Specific Title, Year, Edited and CopiedToPlex are required and/or have other restraints
         [Key]
         [Required]
         public int MovieID { get; set; }

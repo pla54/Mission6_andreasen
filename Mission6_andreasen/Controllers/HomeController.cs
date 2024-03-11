@@ -5,6 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Mission6_andreasen.Controllers
 {
+    //This is my home controller with all the different needed actions
     public class HomeController : Controller
     {
         private MovieContext _context;
@@ -22,6 +23,8 @@ namespace Mission6_andreasen.Controllers
         {
             return View("GetToKnow");
         }
+
+        //Get and post method for adding a movie to the database and checking for a valid entry
         [HttpGet]
         public IActionResult MovieAdd()
         {
@@ -55,6 +58,7 @@ namespace Mission6_andreasen.Controllers
             //return View("Confirmation");
         }
 
+        //The list of movies view for editing and deleting
         public IActionResult MovieList()
         {
             var Movies = _context.Movies
@@ -67,6 +71,8 @@ namespace Mission6_andreasen.Controllers
 
             return View(Movies);
         }
+
+        //get and post methods for edit with valiadation 
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -99,6 +105,8 @@ namespace Mission6_andreasen.Controllers
                 return View("MovieAdd", updatedInfo);
             }
         }
+
+        //Get and post methods for deleting with a confirmation page
 
         [HttpGet]
         public IActionResult Delete(int id)
