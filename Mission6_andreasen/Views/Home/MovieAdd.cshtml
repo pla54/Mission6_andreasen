@@ -9,8 +9,16 @@
 <h1>What Movies Should I watch?</h1>
 
 <form method="post">
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category" />
+
+    <input type="hidden" asp-for="MovieID" />
+
+    <select asp-for="CategoryId">
+        <option value="">Select a Category:</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
 
     <br />
 
@@ -30,12 +38,7 @@
     <br />
 
     <label asp-for="Rating">What is the Rating?</label>
-    <select asp-for="Rating">
-        <option value="G">G</option>
-        <option value="PG">PG</option>
-        <option value="PG-13">PG-13</option>
-        <option value="R">R</option>
-    </select>
+    <input asp-for="Rating"/>
 
     <br />
 
@@ -52,10 +55,20 @@
 
     <br />
 
+    <label asp-for="CopiedToPlex">CopiedToPlex</label>
+    <select asp-for="CopiedToPlex">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+
+    <br />
+
     <label asp-for="Notes">Notes:</label>
     <input asp-for="Notes" />
 
     <br />
 
     <button type="submit">Submit Movie</button>
+
+    <div asp-validation-summary="All"></div>
 </form>

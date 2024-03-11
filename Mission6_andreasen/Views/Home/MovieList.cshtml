@@ -1,0 +1,41 @@
+﻿@* Table for "Movie" model with matching style *@
+
+@{
+    var categories = ViewBag.Categories as List<Category>;
+}
+
+<table class="table table-bordered">
+    <thead class="fw-bold">
+        <tr>
+            <td>Title</td>
+            <td>Category</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>LentTo</td>
+            <td>CopiedToPlex</td>
+            <td>Notes</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    @foreach (var x in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@x.Title</td>
+                <td>@(categories?.FirstOrDefault(c => c.CategoryId == x.CategoryId)?.CategoryName)</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.LentTo</td>
+                <td>@x.CopiedToPlex</td>
+                <td>@x.Notes</td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieID">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieID">Delete</a></td>
+            </tr>
+        </tbody>
+    }
+</table>
